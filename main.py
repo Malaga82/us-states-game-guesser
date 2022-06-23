@@ -24,17 +24,19 @@ def guess_name():
     df = pandas.read_csv('50_states.csv')
     all_states = df.state.tolist()
     if answer_state.lower() == "exit":
+        missing_states=[state for state in all_states if state not in guessed]
+        #print(guessed)
             #missing_states.append(answer_state)
-            for state in all_states:
+            #for state in all_states:
                 #print(state)
-                if state not in guessed:
+                #if state not in guessed:
                     #print(f"state guessed: {guessed}")
                     #print(f"state not guessed: {state}")
-                    missing_states.append(state)
-            saved_df = pandas.DataFrame({'state': missing_states,'guessed': False})
+        #missing_states.append(state)
+        saved_df = pandas.DataFrame({'state': missing_states,'guessed': False})
         #saved_df = pandas.DataFrame(missing_states)
-            saved_df.to_csv('missing_states.csv')
-            exit()
+        saved_df.to_csv('missing_states.csv')
+        exit()
 
     if answer_state.capitalize() not in guessed:
         if not(df.state[df.state.str.lower() == answer_state.lower()].empty):
