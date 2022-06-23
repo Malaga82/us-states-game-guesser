@@ -24,7 +24,7 @@ def guess_name():
     df = pandas.read_csv('50_states.csv')
     if answer_state.lower() not in guessed_states:
         if not(df.state[df.state.str.lower() == answer_state.lower()].empty):
-            state = df.state[df.state.str.lower() == answer_state.lower()].values[0]
+            state = df.state[df.state.str.lower() == answer_state.lower()].item()
             x = float(df.x[df.state.str.lower() == answer_state.lower()])
             y = float(df.y[df.state.str.lower() == answer_state.lower()])
             turtle.goto(x,y)
